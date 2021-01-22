@@ -29,6 +29,20 @@ function App() {
   // forEach - when we want to do something to all of the items
   bopsFromThe80s.forEach((bop) => console.log(bop.title));
 
+  // some method: checks condition and returns TRUE of some items satisfy the condition
+  const Africa = bopsFromThe80s.some((bop) => bop.title === "Africa");
+  if (Africa) {
+    // important
+    console.log("Bless the rains")
+  }
+
+  // every method: like the some method, except it's for all of them
+  const hasApostrophe = bopsFromThe80s.every((bop) => bop.title.includes("'"))
+  // false - not all songs have apostrophes :'(
+  console.log(hasApostrophe)
+
+
+
   return (
     <div className="App">
       <header className="App-header">
