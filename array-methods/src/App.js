@@ -1,35 +1,42 @@
-import icon from './80sIcon.png'
-import './App.css';
+import icon from "./80sIcon.png";
+import "./App.css";
 
 function App() {
-
-
   const bopsFromThe80s = [
-    { songTitle: 'Jump', artist: 'Van Halen'},
-    { songTitle: 'Ghostbusters Theme', artist: 'Ray Parker Jr.'},
-    { songTitle: 'Girls Just Want to Have Fun', artist: 'Cyndi Lauper'},
-    { songTitle: 'I Melt with You', artist: 'Modern English'},
-    { songTitle: 'Should I Stay or Should I Go', artist: 'The Clash'},
-    { songTitle: 'Africa', artist: 'TOTO'},
-    { songTitle: 'Don\'t Dream It\'s Over', artist: 'Crowded House'},
-    { songTitle: 'Jessie\'s Girl', artist: 'Rick Springfield'}
-  ]
+    { title: "Jump", artist: "Van Halen" },
+    { title: "Ghostbusters Theme", artist: "Ray Parker Jr." },
+    { title: "Girls Just Want to Have Fun", artist: "Cyndi Lauper" },
+    { title: "I Melt with You", artist: "Modern English" },
+    { title: "Should I Stay or Should I Go", artist: "The Clash" },
+    { title: "Africa", artist: "TOTO" },
+    { title: "Don't Dream It's Over", artist: "Crowded House" },
+    { title: "Jessie's Girl", artist: "Rick Springfield" },
+  ];
 
+  // filter method - doesn't change the underlying array!
+  const songsWithTheLetterG = bopsFromThe80s.filter((bop) =>
+    bop.title.includes("G")
+  );
+  console.log(songsWithTheLetterG);
 
-    const songsWithTheLetterG = bopsFromThe80s.filter(item => item.songTitle.includes('G'));
-    console.log(songsWithTheLetterG)
+  // find method - when we want to find a single item in an array
+  // we are looking for Rick Springfield
+  const findRickSpringfield = bopsFromThe80s.find(
+    (bop) => bop.artist === "Rick Springfield"
+  );
+  console.log(findRickSpringfield);
 
-
+  // forEach - when we want to do something to all of the items
+  bopsFromThe80s.forEach((bop) => console.log(bop.title));
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={icon} className="App-logo" alt="logo" />
-        {/* <img src={grid} className="App-background" alt="logo"/> */}
-        { bopsFromThe80s.map(item => <p>{item.songTitle + ", " + item.artist}</p>) }
-        {/* <p>
-         {JSON.stringify(bopsFromThe80s)}
-        </p> */}
+        {/* map takes a single parameter and returns what we want in the new array */}
+        {bopsFromThe80s.map((bop) => (
+          <p>{bop.title + ", " + bop.artist}</p>
+        ))}
         <a
           className="App-link"
           href="https://reactjs.org"
