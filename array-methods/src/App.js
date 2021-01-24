@@ -3,14 +3,14 @@ import "./App.css";
 
 function App() {
   const bopsFromThe80s = [
-    { title: "Jump", artist: "Van Halen", playlistItem: 6 },
-    { title: "Ghostbusters Theme", artist: "Ray Parker Jr.", playlistItem: 4 },
-    { title: "Girls Just Want to Have Fun", artist: "Cyndi Lauper", playlistItem: 5 },
-    { title: "I Melt with You", artist: "Modern English", playlistItem: 2 },
-    { title: "Should I Stay or Should I Go", artist: "The Clash", playlistItem: 3 },
-    { title: "Africa", artist: "TOTO", playlistItem: 1 },
-    { title: "Don't Dream It's Over", artist: "Crowded House", playlistItem: 8 },
-    { title: "Jessie's Girl", artist: "Rick Springfield", playlistItem: 7 },
+    { title: "Jump", artist: "Van Halen", plays: 20 },
+    { title: "Ghostbusters Theme", artist: "Ray Parker Jr.", plays: 59 },
+    { title: "Girls Just Want to Have Fun", artist: "Cyndi Lauper", plays: 24 },
+    { title: "I Melt with You", artist: "Modern English", plays: 24 },
+    { title: "Should I Stay or Should I Go", artist: "The Clash", plays: 17 },
+    { title: "Africa", artist: "TOTO", plays: 25 },
+    { title: "Don't Dream It's Over", artist: "Crowded House", plays: 28 },
+    { title: "Jessie's Girl", artist: "Rick Springfield", plays: 16 },
   ];
 
   // filter method - doesn't change the underlying array!
@@ -44,9 +44,14 @@ function App() {
 
   // reduce method - runs a function on every single item of the array
   const addingNumbers = bopsFromThe80s.reduce((currentTotal, bop) => {
-   return bop.playlistItem + currentTotal
+   return bop.plays + currentTotal
   }, 0)
   console.log(addingNumbers)
+
+  // includes method - ez pz
+  const MadonnaSongs = ['Like A Prayer', 'Material Girl', 'Express Yourself']
+  const materialGirl = MadonnaSongs.includes("Material Girl")
+  console.log(materialGirl)
 
   return (
     <div className="App">
