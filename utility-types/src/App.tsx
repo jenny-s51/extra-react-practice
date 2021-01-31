@@ -11,6 +11,11 @@ type StarshipNameOnly = Pick<Starship, "name">;
 // Omit<T,K> : don't include certain properties
 type OmitNameFromStarship = Omit<Starship, "name">;
 
+/* Required<T>: when we apply this to an interface, 
+we get a new type with all properties required */
+
+// Readonly<T>: takes an interface an creates a new type with all properties being Readonly
+
 // Partial<T>: we get a new type with all properties optional
 const updateStarship = (id: number, starship: Partial<Starship>) => {};
 
@@ -65,7 +70,7 @@ type DrinksNaomiLikes =
 
 /* we extract the drinks she likes. 
  water isn't in space bevs so it doesn't get extracted! */
-let NaomisDrink: Extract<SpaceBeverages, DrinksNaomiLikes>
+let NaomisDrink: Extract<SpaceBeverages, DrinksNaomiLikes>;
 
 // NaomisDrink = 'Ceres Whiskey'
 // console.log(NaomisDrink)
@@ -77,32 +82,25 @@ interface StarshipProperties {
 const paintStarship = (
   id: number,
   color: NonNullable<StarshipProperties["color"]>
-) => {return {id, color}};
+) => {
+  return { id, color };
+};
 
 // we can't assign null to A bc it's a string
 // const A: string = null;
 
 // can't assign undefined bc color is non-nullable
-paintStarship(1, 'purple');
+paintStarship(1, "purple");
 
 // extracts the return type of the function
 type PaintStarshipReturn = ReturnType<typeof paintStarship>;
-
-
-
-/* Required<T>: when we apply this to an interface, 
-we get a new type with all properties required */
-
-// Readonly<T>: takes an interface an creates a new type with all properties being Readonly
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Utility Types!
-        </p>
+        <p>Utility Types!</p>
         <a
           className="App-link"
           href="https://reactjs.org"
