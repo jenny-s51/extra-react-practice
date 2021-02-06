@@ -6,6 +6,6 @@ const logDetails = (uid: StringOrNum, item: string) => {
 }
 
 // we don't have to rewrite anything now
-const greet = (user: ObjWithName) => {
+const greet1 = (user: ObjWithName) => {
     console.log(`${user.name} says hello!`)
 }
