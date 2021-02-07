@@ -1,7 +1,5 @@
 // interfaces are geared towards defining the shapes of objects or classes!
 
-// when you're not dealing with objects, probably use a type instead
-
 interface Person{
     name: string;
     hungry: boolean;
