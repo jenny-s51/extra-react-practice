@@ -66,6 +66,45 @@ const videoDetails = (video) => {
 //     }
 //   );
 
-loginUser('god', '123456').then(user => getUserVids((user as any).email)).then(videos => videoDetails(videos[0])).then(detail  => console.log(detail))
+// loginUser("god", "123456")
+//   .then((user) => getUserVids((user as any).email))
+//   .then((videos) => videoDetails(videos[0]))
+//   .then((detail) => console.log(detail));
 
+// what if we want to do something like this?
+
+// sync - this is the nicest way to do it! we can do it with async/await (syntactical sugar). JS people were like "let's make this better" and then they did
+const user = loginUser("ed sheeran", "PEMDAS");
+const video = videoDetails((user as any).email);
 console.log("end");
+
+const youtube = new Promise((resolve) => {
+  setTimeout(() => {
+    console.log("getting stuff from youtube");
+    resolve({ videos: [1, 2, 3, 4, 5] });
+  });
+});
+
+const facebook = new Promise((resolve) => {
+  setTimeout(() => {
+    console.log("getting stuff from facebook");
+    resolve({ user: "name" });
+  });
+});
+
+Promise.all([youtube, facebook]).then(result => console.log(result));
+
+// ASYNC AWAIT
+
+loginUser("god", "123456")
+  .then((user) => getUserVids((user as any).email))
+  .then((videos) => videoDetails(videos[0]))
+  .then((detail) => console.log(detail));
+
+// SYNC
+const displayUser = async () => {
+    const user = await loginUser('ed', '12345');
+    const videos = await getUserVids((user as any).userEmail)
+}
+
+displayUser();
