@@ -116,17 +116,15 @@ loginUser("god", "123456")
     .then(function (detail) { return console.log(detail); });
 // SYNC
 var displayUser = function () { return __awaiter(_this, void 0, void 0, function () {
-    var user, videos;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, loginUser('ed', '12345')];
-            case 1:
-                user = _a.sent();
-                return [4 /*yield*/, getUserVids(user.userEmail)];
-            case 2:
-                videos = _a.sent();
-                return [2 /*return*/];
+        try {
+            // const user = await loginUser("ed", "12345");
+            // const videos = await getUserVids((user as any).userEmail);
         }
+        catch (err) {
+            console.log("we could not get the videos");
+        }
+        return [2 /*return*/];
     });
 }); };
 displayUser();

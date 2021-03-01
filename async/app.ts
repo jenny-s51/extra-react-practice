@@ -92,7 +92,7 @@ const facebook = new Promise((resolve) => {
   });
 });
 
-Promise.all([youtube, facebook]).then(result => console.log(result));
+Promise.all([youtube, facebook]).then((result) => console.log(result));
 
 // ASYNC AWAIT
 
@@ -103,8 +103,12 @@ loginUser("god", "123456")
 
 // SYNC
 const displayUser = async () => {
-    const user = await loginUser('ed', '12345');
-    const videos = await getUserVids((user as any).userEmail)
-}
+  try {
+    const user = await loginUser("ed", "12345");
+    const videos = await getUserVids((user as any).userEmail);
+  } catch (err) {
+    console.log("we could not get the videos");
+  }
+};
 
 displayUser();
