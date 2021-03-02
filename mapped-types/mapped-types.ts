@@ -12,3 +12,24 @@ type MyMappedType<T> = {
 
 // let's use generics
 type MyNewType = MyMappedType<{ a: "a"; b: "b" }>;
+
+// need to make sure these properties exist in type T
+type Pick1<T, Properties extends keyof T> = {
+    // now let's iterate over the properties we want to pick
+    [P in Properties]: T[P];
+
+};
+
+type MyNewType2 = Pick1<{a: 'a'; b: 'b'}, 'a' | 'b'>;
+
+type Record1<K extends keyof any, T> = {
+
+    [P in K]: T;
+
+};
+
+const someRecord: Record1<'A' | 'B', number> = {A: 1, B: 2}
+
+interface Record2 {
+    [key: string | number: number]
+}
